@@ -2,7 +2,7 @@
 
 Job is a simple library for cancellable asynchronous tasks. Job was inspired by Kotlin coroutines and tries to bring
 some of the same functionality to TypeScript/JavaScript.
-<br/><br/>
+<br><br>
 
 # Documentation
 - [Installation](#installation)
@@ -11,16 +11,16 @@ some of the same functionality to TypeScript/JavaScript.
 - [API](docs/api.md)
 - [Example Project](example/)
 - [Release Notes](docs/release-notes.md)
-<br/><br/>
+<br><br>
 
 # Installation
 `job` can be installed using NPM or Yarn. The scripts provided by the NPM package are UMD scripts and will also work as script tags.
-<br/><br/>
+<br><br>
 
 ```bash
 yarn add @ethossoftworks/job @ethossoftworks/outcome
 ```
-<br/><br/>
+<br><br>
 
 # Usage
 ## Simple Job
@@ -32,6 +32,7 @@ const result = await new Job(async (job) => {
     return Outcome.ok("Success")
 }).run()
 ```
+<br><br>
 
 ## Cancel a Job
 Every job is cancellable. Cancelling will stop the job at the next "pause" point.
@@ -51,6 +52,7 @@ if (Job.isCancelled(result)) {
     // This block will run
 }
 ```
+<br><br>
 
 ## Children Jobs
 Jobs may have children jobs launched from them. When the parent completes or is cancelled, children jobs will be cancelled if they have not already completed.
@@ -89,20 +91,19 @@ new Job(async (job) => {
     return Outcome.ok("Success")
 })
 ```
-
-<br/><br/>
+<br><br>
 
 # Build Info
 ## Build
 `yarn build` or `yarn build-dev`
-<br/><br/>
+<br><br>
 
 ## Develop
 1. Open two terminals
 2. Run `yarn start-ts` in the first
 3. Run `yarn start-bundler` in the second
-<br/><br/>
+<br><br>
 
 ## Test
 `yarn build-test` or `yarn test`
-<br/><br/>
+<br><br>
