@@ -1,10 +1,10 @@
 {
     "name": "@ethossoftworks/job",
+    "version": "1.0.0",
     "author": {
         "name": "Ryan Mitchener"
     },
     "license": "MIT",
-    "version": "1.0.0",
     "description": "A simple library for cancellable asynchronous tasks",
     "keywords": [
         "cancellable",
@@ -24,7 +24,7 @@
     ],
     "dependencies": {},
     "peerDependencies": {
-        "@ethossoftworks/outcome": "^2.0.0"
+        "@ethossoftworks/outcome": "^2.1.0"
     },
     "devDependencies": {
         "@ethossoftworks/outcome": "^2.1.0",
