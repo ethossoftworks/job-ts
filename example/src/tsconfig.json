@@ -1,0 +1,17 @@
+{
+    "extends": "../tsconfig-base.json",
+    "references": [
+        {
+            "path": "./lib"
+        },
+        {
+            "path": "./ui"
+        }
+    ],
+    "files": [
+        "./index.tsx",
+    ],
+    "compilerOptions": {
+        "outDir": "../build/generated",
+    }
+}

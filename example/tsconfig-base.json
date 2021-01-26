@@ -1,0 +1,37 @@
+{
+    "compilerOptions": {
+        "target": "es2017",
+        "module": "ESNext",
+        "moduleResolution": "Node",
+        "declaration": true,
+        "declarationDir": "./build/types",
+        "sourceMap": true,
+        "outDir": "./build",
+        "strict": true,
+        "noImplicitAny": true,
+        "strictNullChecks": true,
+        "noImplicitThis": true,
+        "esModuleInterop": true,
+        "jsx": "react",
+        "skipLibCheck": true,
+        "composite": true,
+        "baseUrl": ".",
+        "paths": {
+            "lib/*": [
+                "src/lib/*"
+            ],
+            "model/*": [
+                "src/model/*"
+            ],
+            "service/*": [
+                "src/service/*"
+            ],
+            "state/*": [
+                "src/state/*"
+            ],
+            "ui/*": [
+                "src/ui/*"
+            ]
+        }
+    }
+}

@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+        "target": "es2017",
+        "module": "CommonJS",
+        "moduleResolution": "Node",
+        "declaration": true,
+        "declarationDir": "./build/generated/types",
+        "sourceMap": true,
+        "strict": true,
+        "noImplicitAny": true,
+        "strictNullChecks": true,
+        "noImplicitThis": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "composite": true,
+        "jsx": "react",
+    },
+}

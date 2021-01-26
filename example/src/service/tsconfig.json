@@ -1,0 +1,14 @@
+{
+    "extends": "../../tsconfig-base.json",
+    "references": [
+        {
+            "path": "../model"
+        },
+        {
+            "path": "../lib"
+        }
+    ],
+    "compilerOptions": {
+        "outDir": "../../build/generated/service",
+    }
+}

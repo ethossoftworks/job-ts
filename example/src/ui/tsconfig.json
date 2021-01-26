@@ -1,0 +1,20 @@
+{
+    "extends": "../../tsconfig-base.json",
+    "references": [
+        {
+            "path": "../model"
+        },
+        {
+            "path": "../service"
+        },
+        {
+            "path": "../state"
+        },
+        {
+            "path": "../lib"
+        },
+    ],
+    "compilerOptions": {
+        "outDir": "../../build/generated/ui",
+    }
+}

@@ -1,0 +1,17 @@
+*, *:before, *:after { box-sizing: inherit; margin: 0; padding: 0; }
+html { font-size: 62.5%; box-sizing: border-box; }
+img { border: none; }
+img, embed, object, video { max-width: 100%; }
+button::-moz-focus-inner, input[type="button"]::-moz-focus-inner, input[type="submit"]::-moz-focus-inner, input[type="reset"]::-moz-focus-inner { padding: 0 !important; border: 0 none; }
+::-webkit-input-placeholder { font-size: inherit; font-family: inherit; font-weight: inherit; color: inherit; opacity: .65; }
+::-moz-placeholder { font-size: inherit; font-family: inherit; font-weight: inherit; color: inherit; opacity: .65; }
+:-ms-input-placeholder { font-size: inherit; font-family: inherit; font-weight: inherit; color: inherit; opacity: .65; }
+body { font-size: var(--font-size); font-family: var(--font-family); color: var(--font-color); background: var(--bg-color); }
+html, body { height: 100vh; width: 100%; }
+
+:root {
+    --bg-color: #ffffff;
+    --font-family: helvetica;
+    --font-color: #000000;
+    --font-size: 1.6rem;
+}
