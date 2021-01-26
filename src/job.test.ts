@@ -286,10 +286,22 @@ export async function jobTests() {
         }
     })
 
-    test("Job cancellation after complete", async () => {
+    test("Job Cancellation - After Complete", async () => {
         const job = new Job(async (job) => Outcome.ok(1))
-        await job.run()
-        job.cancel()
+        const result = await job.run()
+        job.cancel() // Test that this is a noop
+
+        assert(job.isCompleted, "Job not marked as completed")
+        assert(result.isOk(), "Outcome.Ok not returned")
+    })
+
+    test("Job Cancellation - Internal", async () => {
+        const result = await new Job(async (job) => {
+            job.cancel()
+            return Outcome.ok(1)
+        }).run()
+
+        assert(Job.isCancelled(result), "Job was not cancelled")
     })
 
     test("Job Timeout", async () => {
@@ -396,15 +408,6 @@ export async function jobTests() {
         expect(supervisor.childCount, 1, "runChild was not added as a child")
         await runChild.run()
         expect(supervisor.childCount, 0, "runChild was not removed after cancellation")
-    })
-
-    test("Job Cancelled Checker", async () => {
-        const job = await new Job(async (job) => {
-            job.cancel()
-            return Outcome.ok(1)
-        }).run()
-
-        assert(Job.isCancelled(job), "Job.isCancelled was not true")
     })
 }
 

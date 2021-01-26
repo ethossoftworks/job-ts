@@ -183,7 +183,7 @@ export class Job<T> implements JobHandle {
         this._parent?._removeChild(this)
         this.cancelChildren(new JobCancellationException(JobCancellationReason.ParentJobCancelled))
 
-        if (this._isCancelled) return
+        if (this._isCancelled || this._isCompleted) return
         this._isCancelled = true
         this._cancelResolver(Outcome.error(reason ?? new JobCancellationException(JobCancellationReason.JobCancelled)))
     }
