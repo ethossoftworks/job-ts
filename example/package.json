@@ -4,8 +4,8 @@
     "license": "UNLICENSED",
     "version": "1.0.0",
     "dependencies": {
-        "@ethossoftworks/job": "./ethossoftworks-job-1.0.0.tgz",
-        "@ethossoftworks/outcome": "^2.0.0",
+        "@ethossoftworks/job": "^1.0.0",
+        "@ethossoftworks/outcome": "^2.1.0",
         "lodash.isequal": "^4.5.0",
         "react": "^17.0.1",
         "react-dom": "^17.0.1",
