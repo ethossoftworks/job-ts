@@ -1,4 +1,4 @@
-import { Outcome } from "@ethossoftworks/outcome"
+import { Outcome, Error as OutcomeError } from "@ethossoftworks/outcome"
 
 /**
  * A cancellable unit of work with optional cancellation hierarchy.
@@ -19,7 +19,7 @@ import { Outcome } from "@ethossoftworks/outcome"
  * Running a job more than once will result in a [JobCancellationException].
  *
  * Note: When adding a try/catch mechanism inside of a [JobFunc], make sure to rethrow any [JobCancellationException]
- * exceptions. Otherwise job cancellation will not work as intended.
+ * exceptions, otherwise job cancellation will not work as intended.
  *
  * Example:
  * ```
@@ -56,7 +56,7 @@ export class Job<T> implements JobHandle {
     /**
      * Returns true if the given outcome was cancelled
      */
-    static isCancelled = (outcome: Outcome<unknown>): boolean =>
+    static isCancelled = (outcome: Outcome<unknown>): outcome is OutcomeError<JobCancellationException> =>
         outcome.isError() && outcome.error instanceof JobCancellationException
 
     /**
@@ -70,7 +70,7 @@ export class Job<T> implements JobHandle {
     /**
      * Returns true if the job was completed successfully
      */
-    get isCompleted() {
+    get isCompleted(): boolean {
         return !this.isActive && !this.isCancelled
     }
 
@@ -91,8 +91,13 @@ export class Job<T> implements JobHandle {
     ensureActive() {
         if (this._isCompleted) throw new JobCancellationException(JobCancellationReason.JobCompleted)
         if (this._isCancelled) throw new JobCancellationException(JobCancellationReason.JobCancelled)
-        if ((this._parent?.isActive ?? true) == false)
+
+        // Check parent
+        if (this._parent === undefined) return
+        if (!this._parent.isActive) {
+            if (this._parent.isCompleted) throw new JobCancellationException(JobCancellationReason.ParentJobCompleted)
             throw new JobCancellationException(JobCancellationReason.ParentJobCancelled)
+        }
     }
 
     /**
@@ -156,7 +161,7 @@ export class Job<T> implements JobHandle {
     }
 
     /**
-     * Await a given [future] and ensures the job is active before and after [future] execution. This effectively
+     * Await a given [func] and ensures the job is active before and after [func] execution. This effectively
      * creates a pause/suspend point for the job and prevents returning a result or performing an action on a result
      * if the job has been completed/cancelled.
      *
@@ -258,11 +263,13 @@ export class JobCancellationException implements Error {
  * The reason a job was cancelled.
  *
  * [ParentJobCancelled]: The parent job was cancelled
+ * [ParentJobCompleted]: The parent job completed
  * [JobCancelled]: The current job was cancelled
  * [JobCompleted]: The current job was already completed. This only happens if the same job is run more than once.
  */
 export enum JobCancellationReason {
     ParentJobCancelled,
+    ParentJobCompleted,
     JobCancelled,
     JobCompleted,
 }

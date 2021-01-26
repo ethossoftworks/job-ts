@@ -16,7 +16,7 @@
 
 "@ethossoftworks/job@./ethossoftworks-job-1.0.0.tgz":
   version "1.0.0"
-  resolved "./ethossoftworks-job-1.0.0.tgz#ac026713ede4c712c17aa5d52f6740640a5d77d9"
+  resolved "./ethossoftworks-job-1.0.0.tgz#de803a5b1e617e551bc19207907bdb864a91117b"
 
 "@ethossoftworks/knock-on-wood@2.0.0":
   version "2.0.0"

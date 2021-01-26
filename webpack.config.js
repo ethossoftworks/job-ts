@@ -29,7 +29,7 @@ const prodConfig = {
         },
     },
     output: {
-        filename: `${projectName}-[name].js`,
+        filename: `${projectName}.[name].js`,
         path: path.resolve(__dirname, "build/dist"),
         library: [projectName, "[name]"],
         libraryTarget: "umd",

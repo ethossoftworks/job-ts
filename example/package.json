@@ -34,8 +34,8 @@
         "build-test": "yarn format && npx tsc -b src/tsconfig.test.json && npx webpack --env test",
         "start-bundler": "npx webpack serve --env dev",
         "start-ts": "npx tsc -b src/ -w",
-        "bundle-inspect": "yarn build && npx source-map-explorer build/dist/app-core.js",
-        "bundle-inspect-libs": "yarn build && npx source-map-explorer build/dist/app-libs.js",
+        "bundle-inspect": "yarn build && npx source-map-explorer build/dist/app.core.js",
+        "bundle-inspect-libs": "yarn build && npx source-map-explorer build/dist/app.libs.js",
         "test": "yarn build-test && node build/dist/app.test.js",
         "test-inspect": "yarn build-test && node --inspect-brk build/dist/app.test.js",
         "update-local-lib": "node scripts/update-local-lib.js"

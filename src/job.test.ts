@@ -115,18 +115,18 @@ export async function jobTests() {
         }
 
         // ParentCancelled
-        const parent = new Job(async (job) => {
+        const parentCancelled = new Job(async (job) => {
             await job.delay(500)
             return Outcome.ok(1)
         })
 
-        const child = parent.launch(async (job) => {
+        const parentCancelledChild = parentCancelled.launch(async (job) => {
             await job.delay(1000)
             return Outcome.ok(1)
         })
 
-        setTimeout(() => parent.cancel(), 250)
-        const childResult = await child.run()
+        setTimeout(() => parentCancelled.cancel(), 250)
+        const childResult = await parentCancelledChild.run()
 
         if (
             childResult.isOk() ||
@@ -135,6 +135,26 @@ export async function jobTests() {
         ) {
             fail("Parent Cancelled: JobCancellationReason.ParentJobCancelled not returned")
         }
+
+        // ParentCompleted
+        const parentCompleted = new Job(async (job) => {
+            await job.delay(100)
+            return Outcome.ok(1)
+        })
+        parentCompleted.run()
+
+        const parentCompletedChild = parentCompleted.launchAndRun(async (job) => {
+            await job.delay(200)
+            return Outcome.ok(1)
+        })
+
+        const parentCompletedChildResult = await parentCompletedChild
+
+        assert(
+            Job.isCancelled(parentCompletedChildResult) &&
+                parentCompletedChildResult.error.reason == JobCancellationReason.ParentJobCompleted,
+            "Parent Cancelled: JobCancellationReason.ParentJobCompleted not returned"
+        )
 
         // JobCancelled
         const cancelledJob = new Job(async (job) => {
@@ -164,6 +184,19 @@ export async function jobTests() {
                 JobCancellationReason.ParentJobCancelled
         ) {
             fail("Launch After Cancelled: JobCancellationReason.ParentJobCancelled not returned")
+        }
+
+        // Launch after parent completed
+        const launchAfterCompletedJob = new Job(async (job) => Outcome.ok(1))
+        await launchAfterCompletedJob.run()
+        const launchAfterCompletedResult = await launchAfterCompletedJob.launchAndRun(async (job) => Outcome.ok(1))
+        if (
+            launchAfterCompletedResult.isOk() ||
+            !(launchAfterCompletedResult.error instanceof JobCancellationException) ||
+            (launchAfterCompletedResult.error as JobCancellationException).reason !=
+                JobCancellationReason.ParentJobCompleted
+        ) {
+            fail("Launch After Completed: JobCancellationReason.ParentJobCompleted not returned")
         }
     })
 

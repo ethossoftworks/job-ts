@@ -12,10 +12,10 @@
   resolved "https://registry.yarnpkg.com/@ethossoftworks/knock-on-wood/-/knock-on-wood-2.0.0.tgz#38f4ee3bf4a8d3357527be9643aa9cc7eff85114"
   integrity sha512-MX2zCmnbuz8wbrtL1KD/VPRvkK0kZPdnLFOCBDB1HXpQA2XBPzJdt5SV+szZKFyZsaz3NKQvE03OnY3qXtWEHQ==
 
-"@ethossoftworks/outcome@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@ethossoftworks/outcome/-/outcome-2.0.0.tgz#a39866f6f2852f0f4f9bd25e985ed6c08dcc53ec"
-  integrity sha512-6lFAZ+2bnyDYn0AJcIapxxqpLZZYb6FKS2fclc4m+YnbLFy4PFGY2+6lPDxXGV+CO5BYmxtqstidbTFGRDXBrg==
+"@ethossoftworks/outcome@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@ethossoftworks/outcome/-/outcome-2.1.0.tgz#08cb846b1b41291c679a9a89980bfbde1268b730"
+  integrity sha512-E8eaC3IbDprXpI8vvJkUDXprMlNw5y97eojD7t+H/n+U3ImqTiL4Xvp19PsqSKBXYNUALvdWFGNiyrHaewudbg==
 
 "@nodelib/fs.scandir@2.1.4":
   version "2.1.4"
