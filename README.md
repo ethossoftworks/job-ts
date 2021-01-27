@@ -18,7 +18,7 @@ some of the same functionality to TypeScript/JavaScript.
 <br><br>
 
 ```bash
-yarn add @ethossoftworks/job @ethossoftworks/outcome
+yarn add @ethossoftworks/job
 ```
 <br><br>
 
