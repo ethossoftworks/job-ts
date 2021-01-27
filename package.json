@@ -14,7 +14,7 @@
     "repository": {
         "url": "https://github.com/ethossoftworks/job-ts.git"
     },
-    "main": "job.core.js",
+    "main": "Job.js",
     "types": "types/index.d.ts",
     "files": [
         "types/",
@@ -45,9 +45,9 @@
         "build-publish": "yarn build && cd ./build/dist && npm publish --access public",
         "start-bundler": "npx webpack --watch",
         "start-ts": "npx tsc -b src/ -w",
-        "bundle-inspect": "yarn build && npx source-map-explorer build/dist/job.core.js",
+        "bundle-inspect": "yarn build && npx source-map-explorer build/dist/Job.js",
         "test": "yarn build-test && node build/dist/job.test.js",
-        "test-inspect": "yarn build-test && node --inspect-brk build/dist/job.test.js"
+        "test-inspect": "yarn build-test && node --inspect-brk build/dist/Job.js"
     },
     "prettier": {
         "endOfLine": "lf",
