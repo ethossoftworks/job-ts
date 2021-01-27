@@ -14,11 +14,13 @@ some of the same functionality to TypeScript/JavaScript.
 <br><br>
 
 # Installation
-`job` can be installed using NPM or Yarn. The scripts provided by the NPM package are UMD scripts and will also work as script tags.
+`job` can be installed using NPM or Yarn. The scripts provided by the NPM package are UMD scripts and will also work as
+script tags. If using script tags, you must load the UMD scripts for `@ethossoftworks/outcome` before the scripts for
+`@ethossoftworks/job`.
 <br><br>
 
 ```bash
-yarn add @ethossoftworks/job @ethossoftworks/outcome
+yarn add @ethossoftworks/job
 ```
 <br><br>
 

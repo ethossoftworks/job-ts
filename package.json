@@ -1,6 +1,6 @@
 {
     "name": "@ethossoftworks/job",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "author": {
         "name": "Ryan Mitchener"
     },
@@ -22,12 +22,11 @@
         "!*.js.map",
         "!*.test.d.ts"
     ],
-    "dependencies": {},
-    "peerDependencies": {
+    "dependencies": {
         "@ethossoftworks/outcome": "^2.1.0"
     },
+    "peerDependencies": {},
     "devDependencies": {
-        "@ethossoftworks/outcome": "^2.1.0",
         "@ethossoftworks/knock-on-wood": "^2.0.0",
         "copy-webpack-plugin": "^7.0.0",
         "prettier": "^2.1.2",
