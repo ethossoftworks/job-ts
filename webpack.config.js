@@ -5,7 +5,7 @@
  * build step that gets mapped to the build/generated folder which webpack then bundles.
  */
 
-const projectName = "job"
+const projectName = "Job"
 
 const webpack = require("webpack")
 const path = require("path")
@@ -15,9 +15,7 @@ const CopyWebpackPlugin = require("copy-webpack-plugin")
 const prodConfig = {
     mode: "production",
     target: "web",
-    entry: {
-        core: { import: "./build/generated/index.js" },
-    },
+    entry: "./build/generated/index.js",
     resolve: {
         extensions: [".tsx", ".ts", ".js", ".jsx"],
         alias: {
@@ -29,9 +27,9 @@ const prodConfig = {
         },
     },
     output: {
-        filename: `${projectName}.[name].js`,
+        filename: `${projectName}.js`,
         path: path.resolve(__dirname, "build/dist"),
-        library: [projectName, "[name]"],
+        library: projectName,
         libraryTarget: "umd",
         globalObject: "this",
     },

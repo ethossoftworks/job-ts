@@ -14,10 +14,10 @@
   resolved "https://registry.yarnpkg.com/@discoveryjs/json-ext/-/json-ext-0.5.2.tgz#8f03a22a04de437254e8ce8cc84ba39689288752"
   integrity sha512-HyYEUDeIj5rRQU2Hk5HTB2uHsbRQpF70nvMhVzi+VJR0X+xNEhjPui4/kBf3VeH/wqD28PT4sVOm8qqLjBrSZg==
 
-"@ethossoftworks/job@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@ethossoftworks/job/-/job-1.0.1.tgz#c1ebe3ad984bfaebbcf9ca0f3919aca7678058bc"
-  integrity sha512-pVu651DpnB8GsogL76pblGTvbIRSFIzcHfRxseYtmJWHkJJ6hQH8stzuXU4w2yJOJjw/SFH/h/xBjcrPrKDxGw==
+"@ethossoftworks/job@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@ethossoftworks/job/-/job-1.0.2.tgz#08b4d366a73fc5239a6d31792eab515208d3d2fe"
+  integrity sha512-W/8G+kFDIDWsNb8zj0Iq85JMRJvi9V+5Yt7puX+ssbSLV72ogF+3pFTzn1PkwFGvZjDCZ1ng5mIATCPfQujWgQ==
   dependencies:
     "@ethossoftworks/outcome" "^2.1.0"
 
