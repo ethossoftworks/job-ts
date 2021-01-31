@@ -1,3 +1,6 @@
+# v1.0.3 (2021-01-30)
+* Converted build system to Rollup
+
 # v1.0.2 (2021-01-26)
 * Fixed UMD global variable name
 

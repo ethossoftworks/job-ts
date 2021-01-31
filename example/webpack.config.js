@@ -11,12 +11,14 @@ const webpack = require("webpack")
 const path = require("path")
 const fs = require("fs")
 const CopyWebpackPlugin = require("copy-webpack-plugin")
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin")
 
 const prodConfig = {
     mode: "production",
     target: "web",
     entry: {
-        core: { import: "./build/generated/index.js", dependOn: "libs" },
+        main: { import: "./build/generated/index.js", dependOn: "libs" },
         libs: [
             "react",
             "react-dom",
@@ -35,6 +37,7 @@ const prodConfig = {
             service: path.resolve(__dirname, "build/generated/service"),
             state: path.resolve(__dirname, "build/generated/state"),
             ui: path.resolve(__dirname, "build/generated/ui"),
+            static: path.resolve(__dirname, "static"),
         },
     },
     output: {
@@ -53,6 +56,10 @@ const prodConfig = {
                     },
                 },
             },
+            {
+                test: /\.s?css$/,
+                use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
+            },
         ],
     },
     plugins: [
@@ -65,11 +72,12 @@ const prodConfig = {
                 })
             },
         },
+        new MiniCssExtractPlugin(),
         new webpack.WatchIgnorePlugin({
             paths: [path.resolve(__dirname, "src"), path.resolve(__dirname, "node_modules")],
         }),
         new CopyWebpackPlugin({
-            patterns: [{ from: "./static", to: "./" }],
+            patterns: [{ from: "./static", to: "./", filter: (path) => !/\.s?css$/.test(path) }],
         }),
     ],
     devtool: "source-map",
@@ -80,6 +88,10 @@ const prodConfig = {
         historyApiFallback: {
             index: "index.html",
         },
+    },
+    optimization: {
+        minimize: true,
+        minimizer: [new CssMinimizerPlugin()],
     },
 }
 
